@@ -7,10 +7,8 @@ namespace HomeAmation.Service
     {
         static IocSetup()
         {
-            // SimpleIoc.Default.Register<IWeightService>(() => new WeightService());
+            // Interface from .Pcl implementation in .Win8 and .Wp8
             SimpleIoc.Default.Register<IHomeAmationDataService>(() => new HomeAmationDataService());
-            // SimpleIoc.Default.Register<INavigationService>(() => new NavigationService());
-            // SimpleIoc.Default.Register<SkyDriveWeightService>(() => new SkyDriveWeightService());
         }
     }
 }
