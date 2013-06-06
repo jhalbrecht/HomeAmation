@@ -1,0 +1,127 @@
+﻿<phone:PhoneApplicationPage x:Class="HomeAmation.MainPage"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:ignore="http://www.ignore.com"
+                            xmlns:local="clr-namespace:HomeAmation.Model"
+                            mc:Ignorable="d ignore"
+                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource PhoneFontSizeNormal}"
+                            Foreground="{StaticResource PhoneForegroundBrush}"
+                            SupportedOrientations="Portrait"
+                            Orientation="Portrait"
+                            shell:SystemTray.IsVisible="True"
+                            DataContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot"
+          Background="Transparent">
+
+        <!--Pivot Control-->
+        <phone:Pivot Title="HomeAmation">
+            <!--Pivot item one-->
+            <phone:PivotItem Header="Current">
+                <Grid x:Name="ContentPanel"
+                      Grid.Row="1"
+                      Margin="12,0,12,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="128*" />
+                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="100*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.RowSpan="2">
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Data Logger:"
+                                       Style="{StaticResource MyStyle}" />
+                            <TextBlock Style="{StaticResource MyStyle2}"
+                                       Name="TbDataLoggerDeviceName"
+                                       Text="{Binding Path=Std.DataLoggerDeviceName}"
+                                       VerticalAlignment="Top" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Measured at:"
+                                       Style="{StaticResource MyStyle}" />
+                            <TextBlock Style="{StaticResource MyStyle2}"
+                                       Name="tbCurrentTime"
+                                       Text="{Binding Path=Std.CurrentMeasuredTime}"
+                                       VerticalAlignment="Top" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Inside:"
+                                       Style="{StaticResource MyStyle}" />
+                            <TextBlock Style="{StaticResource MyStyle2}"
+                                       Name="tbCurrentInTemp"
+                                       Text="{Binding Path=Std.CurrentTemperature0, Converter={StaticResource TwoPlace}}"
+                                       VerticalAlignment="Top" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Outside:"
+                                       Style="{StaticResource MyStyle}" />
+                            <TextBlock Style="{StaticResource MyStyle2}"
+                                       Name="tbCurrentOutTemp"
+                                       Text="{Binding Path=Std.CurrentTemperature1, Converter={StaticResource TwoPlace}}"
+                                       VerticalAlignment="Top" />
+                        </StackPanel>
+                    </StackPanel>
+
+                </Grid>
+            </phone:PivotItem>
+
+            <phone:PivotItem Header="Summary">
+                <StackPanel>
+                    <TextBlock Text="30 Day Max"
+                               Style="{StaticResource MyStyle2}" />
+                    <StackPanel Orientation="Vertical"
+                                Margin="20,0,0,30">
+
+                        <TextBlock Style="{StaticResource MyStyle2}"
+                                   Text="{Binding Path=Std.ThirtyDayMaxTemperature0, Converter={StaticResource TwoPlace}}"
+                                   VerticalAlignment="Top"
+                                   Width="100" />
+                        <TextBlock Style="{StaticResource MyStyle2}"
+                                   Text="{Binding Path=Std.ThirtyDayMaxTime}"
+                                   VerticalAlignment="Top" />
+                    </StackPanel>
+                    <TextBlock Text="30 Day Min"
+                               Style="{StaticResource MyStyle2}" />
+                    <StackPanel Orientation="Vertical"
+                                Margin="20,0,0,30">
+
+                        <TextBlock Style="{StaticResource MyStyle2}"
+                                   Text="{Binding Path=Std.ThirtyDayMinTemperature0, Converter={StaticResource TwoPlace}}"
+                                   VerticalAlignment="Top"
+                                   Width="100" />
+                        <TextBlock Style="{StaticResource MyStyle2}"
+                                   Text="{Binding Path=Std.ThirtyDayMinTime}"
+                                   VerticalAlignment="Top" />
+                    </StackPanel>
+                    <TextBlock Text="Thirty Day average"
+                               Style="{StaticResource MyStyle2}" />
+                    <StackPanel Orientation="Vertical"
+                                Margin="20,0,0,30">
+
+                        <TextBlock Style="{StaticResource MyStyle2}"
+                                   Text="{Binding Path=Std.ThirtyDayAvgTemperature0, Converter={StaticResource TwoPlace}}"
+                                   VerticalAlignment="Top"
+                                   Width="100" />
+                    </StackPanel>
+                </StackPanel>
+            </phone:PivotItem>
+
+            <phone:PivotItem Header="Historical">
+                <Grid x:Name="RadContentPanel"
+                      Grid.Row="1"
+                      Margin="12,0,12,0">
+                    
+                </Grid>
+            </phone:PivotItem>
+        </phone:Pivot>
+    </Grid>
+</phone:PhoneApplicationPage>

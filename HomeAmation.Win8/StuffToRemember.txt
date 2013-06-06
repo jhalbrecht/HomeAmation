@@ -1,0 +1,43 @@
+﻿
+
+
+            <Chart:RadCartesianChart x:Name="radChart"
+                                     Grid.Column="2"
+                                     Margin="10"
+                                     Grid.RowSpan="3"
+                                     Grid.ColumnSpan="2">
+                <Chart:RadCartesianChart.Grid>
+                    <Chart:CartesianChartGrid MajorLinesVisibility="Y" />
+                </Chart:RadCartesianChart.Grid>
+                <Chart:RadCartesianChart.HorizontalAxis>
+
+                    <Chart:DateTimeCategoricalAxis MajorTickInterval="1440"
+                                                   DateTimeComponent="Second"
+                                                   LabelFitMode="Rotate"
+                                                   LabelFormat="{}{0,0:MMM dd yyyy h:mm tt}" />
+
+                </Chart:RadCartesianChart.HorizontalAxis>
+                <Chart:RadCartesianChart.VerticalAxis>
+                    <Chart:LinearAxis />
+                </Chart:RadCartesianChart.VerticalAxis>
+                <Chart:LineSeries ItemsSource="{Binding Htd}">
+                    <Chart:LineSeries.ValueBinding>
+                        <Chart:PropertyNameDataPointBinding PropertyName="Temperature1" />
+                    </Chart:LineSeries.ValueBinding>
+
+                    <Chart:LineSeries.CategoryBinding>
+                        <Chart:PropertyNameDataPointBinding PropertyName="Time" />
+                    </Chart:LineSeries.CategoryBinding>
+                </Chart:LineSeries>
+
+                <Chart:LineSeries ItemsSource="{Binding Htd}"
+                                  Stroke="Green">
+                    <Chart:LineSeries.ValueBinding>
+                        <Chart:PropertyNameDataPointBinding PropertyName="Temperature0" />
+                    </Chart:LineSeries.ValueBinding>
+                    <Chart:LineSeries.CategoryBinding>
+                        <Chart:PropertyNameDataPointBinding PropertyName="Time" />
+                    </Chart:LineSeries.CategoryBinding>
+                </Chart:LineSeries>
+
+            </Chart:RadCartesianChart>

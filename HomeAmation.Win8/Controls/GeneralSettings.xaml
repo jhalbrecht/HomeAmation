@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="HomeAmation.Controls.GeneralSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:HomeAmation.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <Style x:Key="SettingsHeaderText"
+               TargetType="TextBlock">
+            <Setter Property="FontFamily"
+                    Value="Segoe UI" />
+            <Setter Property="FontWeight"
+                    Value="SemiBold" />
+            <Setter Property="FontSize"
+                    Value="14.6667" />
+            <Setter Property="Margin"
+                    Value="0,0,0,2" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+
+        </Grid.RowDefinitions>
+
+        <!--<TextBlock HorizontalAlignment="Left"
+                   Margin="10,44,0,0"
+                   TextWrapping="Wrap"
+                   Text="Settings"
+                   VerticalAlignment="Top" />-->
+        <StackPanel Orientation="Vertical" >
+            <StackPanel>
+                <TextBox x:Name="TextBoxStdUrl"
+                         Text="TextBox"
+                         VerticalAlignment="Center" />
+                <TextBlock HorizontalAlignment="Center"
+                           Text="Summary Data Url"
+                           VerticalAlignment="Center"
+                           Style="{StaticResource SettingsHeaderText}" Margin="0" />
+
+            </StackPanel>
+            <StackPanel>
+                <TextBox x:Name="TextBoxHtdUrl"
+                         Text="TextBox"
+                         VerticalAlignment="Center" />
+                <TextBlock HorizontalAlignment="Center"
+                           Text="Historical Data Url"
+                           VerticalAlignment="Center"
+                           Style="{StaticResource SettingsHeaderText}" Margin="0" />
+
+            </StackPanel>
+
+            <Button x:Name="ButtonSaveSettings"
+                    Click="ButtonSaveSettings_Click"
+					  HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Content="Save new settings" Foreground="Yellow" />
+
+            <Button x:Name="ButtonRestoreDefaults"
+                    Content="Restore Default Azure Mock up Data Urls" Click="ButtonRestoreDefaults_OnClick"
+                    Foreground="Red"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch" />
+        </StackPanel>
+
+    </Grid>
+</UserControl>
